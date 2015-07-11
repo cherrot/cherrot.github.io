@@ -1,33 +1,43 @@
 permalink: /:year/:month/:day/:title.html
-markdown: kramdown
-pygments: true
+#markdown: kramdown
+markdown: redcarpet
+highlighter: pygments
 
-kramdown:
-  input: GFM
+redcarpet:
+  extensions:
+    - fenced_code_blocks
+    - no_intra_emphasis
+    - strikethrough
+    - autolink
+    - tables
+#kramdown:
+#  input: GFM
+#  auto_ids: true
+#  auto_id_prefix: 'id-'
 
 # 作者信息
 author: 
-  name: 闫肃
-  email: suyan0830@gmail.com
-  link: http://yansu.org
-  weibo: http://weibo.com/yansu0711
-  github: http://github.com/suyan
+  name: cherrot
+  email: cherrotluo@gmail.com
+  link: http://cherrot.com
+  github: http://github.com/cherrot
 
 # 站点信息
-title: 闫肃的博客 
-description: 闫肃的博客
-url: http://yansu.org
+title: cherrot 的日常 
+description: happy hacking :)
+url: http://cherrot.com
 rss_url: /pages/atom.xml
 
 # avatar头像及Favicon
-avatar: http://7u2ho6.com1.z0.glb.clouddn.com/site-avatar.png
-favicon: http://7u2ho6.com1.z0.glb.clouddn.com/site-favicon.ico
+avatar: http://en.gravatar.com/userimage/15965667/4dad7a3b0669f3679678d4428862d867.jpg
+#favicon: http://7u2ho6.com1.z0.glb.clouddn.com/site-favicon.ico
+favicon: '/favicon.ico'
 
 # google analytics 设置
-ga:
-  id: UA-54767140-1
-  url: yansu.org
+#ga:
+#  id: UA-54767140-1
+#  url: yansu.org
 
 # disqus 设置
 disqus:
-  shortname: suyan-zh
+  shortname: cherrot
