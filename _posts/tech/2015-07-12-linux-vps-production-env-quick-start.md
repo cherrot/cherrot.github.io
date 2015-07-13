@@ -156,6 +156,8 @@ multi_accept on;
 
 下文列出了常用Web站点的nginx配置示例，Ubuntu系统下默认将所有虚拟主机配置放置在`/etc/nginx/sites-available/`目录，而把生效配置放置在`/etc/nginx/sites-enabled/`下。更新配置后需要平滑重启nginx和web服务（如`php5-fpm`）以生效。
 
+注意，`listen`字段存在平台差异性，如果`nginx`抱怨bind失败，请仔细阅读[nginx官方文档][nginx]
+
 ```bash
 ln -sf /etc/nginx/sites-available/* /etc/nginx/sites-enabled/
 sudo service php5-fpm restart
@@ -322,6 +324,8 @@ pm.max_requests = 500
 ##参考资料
 * [Ubuntu 服务器配置简易指南][phoenix]
 * [How To Set Up a Private Git Server on a VPS](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-git-server-on-a-vps)
+* [Nginx HttpCoreModule#listen][nginx]
 
 
-[phoenix]:(http://blog.phoenixlzx.com/2014/02/01/simple-steps-with-ubuntu-server/)
+[phoenix]:http://blog.phoenixlzx.com/2014/02/01/simple-steps-with-ubuntu-server/
+[nginx]:http://wiki.nginx.org/HttpCoreModule#listen
