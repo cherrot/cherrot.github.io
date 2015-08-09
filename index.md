@@ -21,6 +21,9 @@ title: Happy hacking ;-)
 * [GitHub](https://github.com/cherrot)
 * [图虫](http://cherrot.tuchong.com/)：从D90到D7000到D610，从18-200到50和35：我似乎体会到写了多年代码却依旧没有入门是怎样一种体验了。
 
+## 2015.08.09
+买了块PCI-E接口的无线网卡，linux下直接可用。并且意外的找到了折磨了我一年的Chrome地址栏卡顿的[问题原因](http://suselinks.us/how-to-fix-slow-typing-in-chrome-addressbar-in-linux/)。真是哔了狗了……当时是`darktable`的某些UI模块中文显示方块，所以改动了fontconfig，将文泉驿放到了`sans-serif`的首选位置，没想到这导致了Chrome UI因无法命中字体缓存而频繁调用`fontconfig`。唉，深深感觉被愚弄了，看来还是得学点调试技巧 ;)
+
 ## 2015.08.03
 今天的晚霞好美，云层时而金黄时而灰黑。下班时夕阳西下，唯有无边无际的黑云压城，从街边路灯下望去，特别有史诗感。
 
