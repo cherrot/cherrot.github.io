@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 碎碎念: ORM, python非阻塞编程, Go vs Elixir, MySQL on NUMA
+title: "碎碎念: ORM, python non-blocking, Go vs Elixir, MySQL on NUMA"
 date: 2015-10-05 23:20:00
 categories: life
 tags: orm python gevent golang elixir mysql numa
