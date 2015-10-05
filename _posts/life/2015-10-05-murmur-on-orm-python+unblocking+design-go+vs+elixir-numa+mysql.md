@@ -64,6 +64,7 @@ StackOverFlow吧，之所以这样的原因可以参考[这篇文章][flask-requ
 单进程吞吐量的。
 
 然而，`gevent`也并非看上去那么完美:
+
 1. Monkey patching - an useful evil. 猴子补丁可以在不改变引用库的条件下使一些原
    生不支持非阻塞的库支持非阻塞的使用。可惜猴子补丁是error-prone的，尤其是引入多
    进程后，这个下文会讲。
@@ -80,6 +81,7 @@ StackOverFlow吧，之所以这样的原因可以参考[这篇文章][flask-requ
 的！有人对`multiprocessing`做了hack，推出了[gipc](https://gehrcke.de/gipc/)，在
 一些简单的场景下，这么搭配也还不错。不过`gipc`还比较年轻，应用场景很有限。一些细
 节文档中并没有做说明，这里列举两个：
+
 1. 示例中都是主进程作为生产者，子进程为消费者。然而如果方向反过来以后，管道写端
    关闭会导致读端抛出`EOFError`。好在合理处理异常后不会造成管道数据错误。
 2. 管道描述符对象(_GIPCHandle)一旦分配给某个进程，那么该对象在当前进程下就不可使
@@ -135,6 +137,7 @@ exacerbates that with so many simple tasks.
 明还有不少空闲内存，但MySQL却开始了swap数据导致线上服务处于假死不响应的状态。
 这里是[一份简要的中文介绍][numa-brief]，MySQL specific的话题建议将下面两篇文章读
 完，Jeremy Cole大神解释的很细致：
+
 1. [The MySQL swap insanity problem and the effects of the NUMA architecture][mysql-swap-insanity-and-the-numa-architecture]
 2. [A brief update on NUMA and MySQL][mysql-numa-update]
 
