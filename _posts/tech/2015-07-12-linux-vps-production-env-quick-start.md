@@ -2,7 +2,7 @@
 layout: post
 title: Linux Web生产环境速配指南
 date: 2015-07-12 23:02:49
-categories: 技术
+categories: tech
 tags: linux git ubuntu
 keywords: linux,git
 description: Linux生产环境速配指南，使用git作为自动部署工具
