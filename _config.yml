@@ -23,13 +23,13 @@ author:
   github: http://github.com/cherrot
 
 # 站点信息
-title: cherrot 的日常 
+title: cherrot 的日常
 description: happy hacking :)
 url: http://cherrot.com
 rss_url: /pages/atom.xml
 
 # avatar头像及Favicon
-avatar: http://en.gravatar.com/userimage/15965667/4dad7a3b0669f3679678d4428862d867.jpg
+avatar: http://en.gravatar.com/userimage/15965667/81ec86b4ed649c9043cdb705c5afccef.png
 #favicon: http://7u2ho6.com1.z0.glb.clouddn.com/site-favicon.ico
 favicon: '/favicon.ico'
 
