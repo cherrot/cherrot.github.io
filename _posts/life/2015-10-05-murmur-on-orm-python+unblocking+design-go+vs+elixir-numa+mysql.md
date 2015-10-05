@@ -138,7 +138,7 @@ exacerbates that with so many simple tasks.
 这里是[一份简要的中文介绍][numa-brief]，MySQL specific的话题建议将下面两篇文章读
 完，Jeremy Cole大神解释的很细致：
 
-1. [The MySQL swap insanity problem and the effects of the NUMA architecture][mysql-swap-insanity-and-the-numa-architecture]
+1. [The MySQL swap insanity problem and the effects of the NUMA architecture][mysql-swap-insanity-on-numa]
 2. [A brief update on NUMA and MySQL][mysql-numa-update]
 
 
@@ -147,6 +147,7 @@ exacerbates that with so many simple tasks.
 [python-gil]: http://lesliezhu.github.io/public/2015-04-20-python-multi-process-thread.html "Python中的GIL、多进程和多线程"
 [flask-request-stack]: http://www.zlovezl.cn/articles/charming-python-start-from-flask-request/ "Charming Python: 从Flask的request说起"
 [gevent-tutorial]: http://xlambda.com/gevent-tutorial/ "Gevent指南"
+[tune-gevent]: https://engineering.pinterest.com/blog/how-we-use-gevent-go-fast "How we use gevent go fast"
 [elixir-vs-go-on-web]: http://lebo.io/2015/06/22/the-unix-philosophy-and-elixir-as-an-alternative-to-go.html "The UNIX Philosophy and Elixir as an Alternative to Go"
 [elixir-vs-go-hacker-news]: https://news.ycombinator.com/item?id=9761470
 [elixir-vs-go-reddit]: https://www.reddit.com/r/elixir/comments/3c8yfz/how_does_go_compare_to_elixir/ "How does GO compare to Elixir?"
