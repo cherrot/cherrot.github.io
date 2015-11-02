@@ -21,17 +21,31 @@ title: Happy hacking ;-)
 * [GitHub](https://github.com/cherrot)
 * [图虫](http://cherrot.tuchong.com/)：从D90到D7000到D610，从18-200到50和35：我似乎体会到写了多年代码却依旧没有入门是怎样一种体验了。
 
-## 2015.08.10
-利用`shuf`和`wc`按比例随机抽样文件行，简单高效：
-    ```
-    file=Your_File
-    shuf -n $((`wc -l < $file`/10)) $file
-    ```
+### 2015.11.02
 
-## 2015.08.09
+`libav` [抽取关键帧](https://libav.org/documentation/avconv.html#Video-and-Audio-grabbing): 
+
+```
+avconv -ss 10 -t 30 -i video.mp4 -r 24.98 -f image2 /tmp/matrix.mp4_%d
+
+-ss: 取样起始时间
+-t: duration
+-r: 取样率（不大于原始FPS的值）
+-f: 强制format
+```
+
+### 2015.08.10
+利用`shuf`和`wc`按比例随机抽样文件行，简单高效：
+
+```
+file=Your_File
+shuf -n $((`wc -l < $file`/10)) $file
+```
+
+### 2015.08.09
 买了块PCI-E接口的无线网卡，linux下直接可用。并且意外的找到了折磨了我一年的Chrome地址栏卡顿的[问题原因](http://suselinks.us/how-to-fix-slow-typing-in-chrome-addressbar-in-linux/)。真是哔了狗了……当时是`darktable`的某些UI模块中文显示方块，所以改动了fontconfig，将文泉驿放到了`sans-serif`的首选位置，没想到这导致了Chrome UI因无法命中字体缓存而频繁调用`fontconfig`。唉，深深感觉被愚弄了，看来还是得学点调试技巧 ;)
 
-## 2015.08.03
+### 2015.08.03
 今天的晚霞好美，云层时而金黄时而灰黑。下班时夕阳西下，唯有无边无际的黑云压城，从街边路灯下望去，特别有史诗感。
 
 今天前端遇到访问阿里云存储的跨域问题，设置CORS后发现不管用啊~提工单跟人家BB了半天才知道阿里云OSS根据请求中是否有`Origin` header来决定是否返回CORS headers，这的确符合规范，可我是`<img>`标签，不是ajax肿么办。。。最后在[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/CORS_enabled_image)上发现原来只需要在`<img>`标签上加一个`crossorigin`即可解决，害我苦思冥想了各种猥琐方案浪费了一下午，原来订协议的早就想到并且提供了这么优雅的解答。这时抬头看到窗外的晚霞，身心舒畅。
@@ -39,11 +53,10 @@ title: Happy hacking ;-)
 最近尝试使用`fluentd`+`elasticsearch`部署一个log存储检索系统。目前尚在踩坑阶段，不过`fluentd`的社区很活跃，提交的Pull Request竟然有望被合并，撒花~ 
 相比而言`elasticsearch`就更偏封闭，使用它更多是因为找不到更合适的而已吧。等坑基本踩完后再写篇总结好了。
 
-## 2015.07.12
+### 2015.07.12
 今天找了一天房子，然并卵，对不喜欢的事情我还真是重度拖延症。
 
-《天使面庞 The Face of an Angel》是部佳作，可能因为角色代入了吧，有时候宁愿把自己锁在一个角落里看自己烂掉。
-
+《天使面庞 The Face of an Angel》是部佳作。
 
 >Is life always this hard, or is it just when you're a kid? 
 
