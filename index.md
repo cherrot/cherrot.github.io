@@ -21,6 +21,18 @@ title: Happy hacking ;-)
 * [GitHub](https://github.com/cherrot)
 * [图虫](http://cherrot.tuchong.com/)：从D90到D7000到D610，从18-200到50和35：我似乎体会到写了多年代码却依旧没有入门是怎样一种体验了。
 
+### 2015.11.18 redis内存分析 + csv终端可视化
+
+redis内存分析工具[redis-rdb-tools](https://github.com/sripathikrishnan/redis-rdb-tools):
+
+```
+pip install rdbtools
+rdb -c memory /var/lib/redis/dump.rdb > rdb.csv
+column -s, -t < rdb.csv|less -#2 -N -S
+```
+
+总之`column`是个神奇的工具
+
 ### 2015.11.02
 
 `libav` [抽取关键帧](https://libav.org/documentation/avconv.html#Video-and-Audio-grabbing): 
