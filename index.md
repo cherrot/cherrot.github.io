@@ -21,6 +21,22 @@ title: Happy hacking ;-)
 * [GitHub](https://github.com/cherrot)
 * [图虫](http://cherrot.tuchong.com/)：从D90到D7000到D610，从18-200到50和35：我似乎体会到写了多年代码却依旧没有入门是怎样一种体验了。
 
+### 2015.11.24 CORS 对30x并不友好
+
+线上通过将`video.test.com/somevideo?frame=123` 301 redirect 到
+`image.test.com/somevideo_123`来模拟了一个视频服务器用来做一些好玩的事情。由于
+某些图片服务可能用到`canvas`，就给全域的`<img>`标签统一加了
+`crossorigin=anonymous`属性（不然当canvas请求图片命中浏览器缓存且没有CORS头时就
+会被跨域限制block掉）。然而我在请求这个"video"时发现redirect后的请求被block了，
+仔细一看发现原来是Chrome设置了redirct后的请求头`Origin`为`null`...
+你也觉得很坑爹是不是？然而google一下发现这还不能说是
+[bug](https://code.google.com/p/chromium/issues/detail?id=154967)，因为人家
+[W3C就这么规定](http://www.w3.org/TR/cors/#redirect-steps)的(见第6步)，我感到下
+体一阵刺痛。。
+
+目前只能退而求其次，将不需要canvas的`<img>`标签统一去掉跨域属性(`crossorigin`)，
+仅在canvas场景下给图片URL加一个自定义参数避免命中浏览器缓存。
+
 ### 2015.11.18 redis内存分析 + csv终端可视化
 
 redis内存分析工具[redis-rdb-tools](https://github.com/sripathikrishnan/redis-rdb-tools):
