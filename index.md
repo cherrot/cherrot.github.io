@@ -50,8 +50,10 @@ mount -a
 [W3C就这么规定](http://www.w3.org/TR/cors/#redirect-steps)的(见第6步)，我感到下
 体一阵刺痛。。
 
-目前只能退而求其次，将不需要canvas的`<img>`标签统一去掉跨域属性(`crossorigin`)，
-仅在canvas场景下给图片URL加一个自定义参数避免命中浏览器缓存。
+如果对安全性不那么敏感，可以在`image.test.com`上将`null`设置为合法的
+"Access-Control-Allow-Origin", 这样，任何redirect到这个域名的请求都被认为是跨域
+安全的了。否则就只能退而求其次，将不需要canvas的`<img>`标签统一去掉跨域属性
+(`crossorigin`)，仅在canvas场景下给图片URL加一个自定义参数避免命中浏览器缓存。
 
 ### 2015.11.18 redis内存分析 + csv终端可视化
 
