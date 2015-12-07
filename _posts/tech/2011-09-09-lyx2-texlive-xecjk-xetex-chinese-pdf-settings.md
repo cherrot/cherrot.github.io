@@ -11,6 +11,7 @@ description:
 在我的[上一篇文章](http://cherrot.com/2011/09/enable-full-chinese-after-installing-lyx-on-ubuntu/ "Ubuntu安装LyX后要做的那点事儿")里介绍了如何使LyX正确导出中文的PDF文件。不过我发现这样做对中文的支持太有限，不能使用其他字体，也不能使用系统的字体等等。还好我是个相当喜欢折腾的人（小胡有言曰“不折腾”，看来我有点反胡扯主义的味道），继续在Google上爬，这才知道原来使用XeTeX处理CJK才是王道，配合XeTeX自带的xeCJK宏包效果那叫一个赞。因为XeTeX最初是为Mac OS X设计的，原生支持Unicode。下面我将以图文形式详细说明如何设置LyX完美支持中文： _注：笔者使用系统平台为Ubuntu 11.04/Ubuntu11.10，LyX版本2.0.0，TexLive版本2009-11。本文以Ubuntu11.04/Ubuntu11.10的设置为例，其他平台大同小异。_ 另外如果不一定使用LyX的话，可以参考这里：[http://www.cnblogs.com/rockcode/archive/2011/08/06/2129561.html](http://www.cnblogs.com/rockcode/archive/2011/08/06/2129561.html "真正的Linux下的中文LATEX解决方案: CTeX + xeCJK + XeTEX") 《Linux下的中文LATEX解决方案》，是使用CTeX+XeTeX宏包实现的。
 
 下文写于2011年，很多内容可能已经过时（我自2014年以后就再没用过LaTeX了）。如果是写论文需要，可以参考下列文章or项目：
+
 1. 朋友reverland发布的[北邮毕业论文LaTeX模板以及使用教程](http://reverland.org/linux/2015/11/29/using-buptgraduatethesis-on-ubuntu/)
 2. [清华大学学位论文LyX模板](https://code.google.com/p/thuthesislyx/)
 3. [云南大学学位论文LyX模板](https://github.com/cherrot/ynuthesislyx)
