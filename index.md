@@ -1,6 +1,8 @@
 ---
 layout: post
-title: Happy hacking ;-)
+title: cherrot 的日常
+description: Happy hacking ;-)
+
 ---
 
 ## whoami
