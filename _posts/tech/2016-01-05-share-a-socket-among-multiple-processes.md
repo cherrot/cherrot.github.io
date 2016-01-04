@@ -15,7 +15,7 @@ description: how do multiple processes share one socket
 `server.listen(1234)`来监听某个端口而不冲突？这在直观看来相当不科学啊，不然就
 不会总是有UNIX网络编程新手问为什么bind socket时遇到"Address in use"的问题了。
 
-今天小搜一下，果然在[StackOverFlow][how-clusters-works-1]有知音：
+今天小搜一下，果然在[StackOverFlow][how-cluster-works-1]有知音：
 
 >The worker processes are spawned using the [child_process.fork][] method, so
 that they can communicate with the parent via IPC and pass server handles back
