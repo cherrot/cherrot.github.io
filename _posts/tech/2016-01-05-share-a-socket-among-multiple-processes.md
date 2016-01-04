@@ -54,12 +54,14 @@ not closed will be available to the child process. so the child process
 inherits the parent's sockets.
 
 也就是说,`fork`后的子进程天生就能继承父进程创建的file descriptor。这也是当下
-`nginx`等web server处理和派发请求的方式。顺便复习一下UNIX网络编程的基础(en)：
-[单连接, fork, select: 三种方式监听socket][socket-tutorial]
+`nginx`等web server处理和派发请求的方式。
+
+顺便贴个链接复习一下UNIX网络编程的基础(en)：
+[单连接, fork, select: 三种监听socket的方式][socket-tutorial]
 
 ## 更进一步：通过SO_REUSEPORT享受Linux内核提供的进程间负载均衡！
 
-我们仍未止步，在搜索`cluster`的工作原理时，无意中发现BSD Socket后来推出了一个黑
+好奇心驱使我仍未止步，在搜索`cluster`工作原理时，无意中发现BSD后来推出了一个黑
 科技一般的Socket Option: `SO_REUSEPORT`，有了这个选项，我们可以让任意进程（
 linux下限制必须是同一用户的进程）同时`bind`相同的source address和port而不报错！
 切记不要用成`SO_REUSEADDR`，这两个Option目的不同。Linux在3.9版本以后正式支持了
