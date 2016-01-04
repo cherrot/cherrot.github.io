@@ -1,6 +1,6 @@
 ---
 layout: post
-title: cherrot 的日常
+title: cherrot's daily
 description: Happy hacking ;-)
 
 ---
@@ -23,13 +23,18 @@ description: Happy hacking ;-)
 * [GitHub](https://github.com/cherrot)
 * [图虫](http://cherrot.tuchong.com/)：从D90到D7000到D610，从18-200到50和35：我似乎体会到写了多年代码却依旧没有入门是怎样一种体验了。
 
+### 2016.01.04 awk按行去重
+
+```
+awk 'NR==FNR{m[$0]}NR>FNR{if(!($1 in m)) print $0}' b.txt a.txt
+```
+
 ### 2015.11.25 /tmp overflow
 
 see [fatal error: error writing to /tmp/ccwAjc9Z.s: No space left on device](http://sharadchhetri.com/2014/02/25/fatal-error-error-writing-tmpccwajc9z-s-space-left-device/)
 
 ```
 df -h
-
 ...
 overflow        1.0M     0  1.0M   0% /tmp
 ```
