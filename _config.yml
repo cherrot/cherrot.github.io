@@ -17,16 +17,16 @@ redcarpet:
 
 # 作者信息
 author: 
-  name: cherrot
+  name: Cherrot Luo
   email: cherrotluo@gmail.com
   link: http://cherrot.com
   github: http://github.com/cherrot
 
 # 站点信息
-title: cherrot's daily
-description: happy hacking :)
+title: Cherrot's Daily
+description: Happy hacking :)
 url: http://cherrot.com
-rss_url: /pages/atom.xml
+rss_url: /feed
 
 # avatar头像及Favicon
 avatar: http://en.gravatar.com/userimage/15965667/81ec86b4ed649c9043cdb705c5afccef.png
