@@ -84,14 +84,17 @@ the hard work" for them.
 
 所以直觉上来讲，使用`SO_REUSEPORT`，让内核处理负载均衡应该比让master进程负责
 监听和派发请求到对应worker进程的方式更有效率，果不其然，`nginx`在1.9.1版本中的
-`Socket Sharding`就是通过`SO_REUSEPORT`实现的:
+Socket Sharding就是通过`SO_REUSEPORT`实现的:
 
 ![before](https://assets.wp.nginx.com/wp-content/uploads/2015/05/Slack-for-iOS-Upload-1-e1432652484191.png)
 
+(默认策略：master监听socket，workers使用`accept_mutex`竞争request connections)
+
 ![after](https://assets.wp.nginx.com/wp-content/uploads/2015/05/Slack-for-iOS-Upload-e1432652376641.png)
 
-benchmark能达到默认策略(master监听socket，workers使用`accept_mutex`竞争
-request connections)的3倍性能(req/s和latency):
+(启用Socket Sharding后)
+
+benchmark能达到默认策略的3倍性能(req/s和latency):
 
 ![benchmark](https://assets.wp.nginx.com/wp-content/uploads/2015/05/reuseport-benchmark.png)
 
