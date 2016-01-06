@@ -1,4 +1,4 @@
-permalink: /:year/:month/:day/:title.html
+permalink: date
 #markdown: kramdown
 markdown: redcarpet
 highlighter: pygments
