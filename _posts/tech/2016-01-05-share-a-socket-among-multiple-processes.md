@@ -83,15 +83,22 @@ the hard work" for them.
 虽然略长，但很浅显易懂，强烈建议像我这样的非专业底层人士通读一遍。
 
 所以直觉上来讲，使用`SO_REUSEPORT`，让内核处理负载均衡应该比让master进程负责
-监听和派发请求到对应worker进程的方式更有效率，那像`nginx`这种靠高效赢得市场的服
-务器竟然没有跟进？果然，小搜一下便看到，`nginx`在1.9.1版本中的`Socket Sharding`
-就是通过`SO_REUSEPORT`实现的，benchmark能达到默认策略(master监听socket，workers
-使用`accept_mutex`竞争request connections)的3倍性能(req/s和latency)。
-详见[官方Blog][socket-sharding-in-nginx]，顺便也科普一下
-[nginx的架构和原理][inside-nginx]，让我们知道`nginx`为何这么屌。
+监听和派发请求到对应worker进程的方式更有效率，果不其然，`nginx`在1.9.1版本中的
+`Socket Sharding`就是通过`SO_REUSEPORT`实现的:
+
+![before](https://assets.wp.nginx.com/wp-content/uploads/2015/05/Slack-for-iOS-Upload-1-e1432652484191.png)
+
+![after](https://assets.wp.nginx.com/wp-content/uploads/2015/05/Slack-for-iOS-Upload-e1432652376641.png)
+
+benchmark能达到默认策略(master监听socket，workers使用`accept_mutex`竞争
+request connections)的3倍性能(req/s和latency):
+
+![benchmark](https://assets.wp.nginx.com/wp-content/uploads/2015/05/reuseport-benchmark.png)
+
+详见[官方Blog][socket-sharding-in-nginx]。顺便也科普一下[nginx的架构和原理][inside-nginx]
 
 所以，未来版本的`cluster`或许也可以扔掉依靠IPC通信的黑魔法，直接使用
-`SO_REUSEPORT`让每个worker在Linux的怀抱里自由玩耍咯～
+`SO_REUSEPORT`，以获得更劲爆的性能。
 
 [how-cluster-works-1]: http://stackoverflow.com/questions/9830741/how-does-the-cluster-module-work-in-node-js "How does the cluster module work in Node.js?"
 [how-cluster-works-2]: https://nodejs.org/api/cluster.html#cluster_how_it_works "How Cluster Works"
