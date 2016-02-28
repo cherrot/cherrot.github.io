@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Cherrot's Daily
+title: Cherrot's
 description: Happy Hacking ;-)
 
 ---
