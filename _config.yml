@@ -1,19 +1,10 @@
 permalink: date
-#markdown: kramdown
-markdown: redcarpet
-highlighter: pygments
+markdown: kramdown
+#markdown: redcarpet
+highlighter: rouge
 
-redcarpet:
-  extensions:
-    - fenced_code_blocks
-    - no_intra_emphasis
-    - strikethrough
-    - autolink
-    - tables
-#kramdown:
-#  input: GFM
-#  auto_ids: true
-#  auto_id_prefix: 'id-'
+kramdown:
+  input: GFM
 
 # 作者信息
 author: 
