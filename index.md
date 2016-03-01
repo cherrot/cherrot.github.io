@@ -23,6 +23,16 @@ description: Happy Hacking ;-)
 * [GitHub](https://github.com/cherrot)
 * [图虫](http://cherrot.tuchong.com/)：从D90到D7000到D610，从18-200到50和35：我似乎体会到写了多年代码却依旧没有入门是怎样一种体验了。
 
+### 2016.03.01 离线安装pip依赖
+
+```
+# 在线环境中下载依赖:
+pip install -r requirements.txt -d /tmp/packages
+# 使用本地目录安装依赖:
+pip install -r requirements.txt --no-index --find-links file:///tmp/packages
+```
+
+
 ### 2016.01.04 awk按行去重
 
 ```
