@@ -73,12 +73,12 @@ description: Linux生产环境速配指南，使用git作为自动部署工具
     sudo service ssh restart
     ```
 
-##生产环境配置(nginx+git)
+## 生产环境配置(nginx+git)
 本节参考[凤凰君的 Ubuntu 服务器配置简易指南][phoenix]。
 
 注意，如果线上部署环境需要多人共享，那么建议单独为git部署创建一个用户`git`，以避免各种奇奇怪怪的权限问题:D
 
-###服务器端git环境
+### 服务器端git环境
 1. 首先创建裸仓库：
 
     ```bash
@@ -109,7 +109,7 @@ description: Linux生产环境速配指南，使用git作为自动部署工具
     chmod +x hooks/post-receive
     ```
 
-###本地git环境:
+### 本地git环境:
 只需要添加remote仓库地址即可：
 
 ```bash
@@ -118,7 +118,7 @@ git push -u deploy master
 ```
 现在看看是不是已经成功部署到指定目录了？
 
-###服务器nginx:
+### 服务器nginx:
 编辑文件 `/etc/nginx/nginx.conf`
 
 ```nginx
@@ -166,7 +166,7 @@ sudo service nginx restart
 # sudo nginx -s reload
 ```
 
-####nginx for PHP示例:
+#### nginx for PHP示例:
 ```nginx
 server {
     # 同时侦听 IPv4+IPv6 80端口：
@@ -202,7 +202,7 @@ server {
 }
 ```
 
-####nginx for python示例（以flask on uwsgi为例）:
+#### nginx for python示例（以flask on uwsgi为例）:
 ```nginx
 server {
     listen [::]:80 ipv6only=off;
@@ -235,7 +235,7 @@ server {
 }
 ```
 
-####nginx反向代理示例：
+#### nginx反向代理示例：
 ```nginx
 server {
     listen [::]:80 ipv6only=off;
@@ -264,9 +264,9 @@ sudo apt-get install apache2-utils
 htpasswd -c /home/master/data/user.pwd YourUserName
 ```
 
-###For newbies: PHP+MySQL速配指南
+### For newbies: PHP+MySQL速配指南
 
-####安装必要的软件包（可以根据个人需要精简部分php软件包——虽然没什么卵用）：
+#### 安装必要的软件包（可以根据个人需要精简部分php软件包——虽然没什么卵用）：
 
 ```bash
 sudo apt-get install php5-cgi php5-mysql php5-fpm php5-curl php5-gd php5-idn php-pear php5-imap php5-mcrypt php5-mhash php5-pspell php5-recode php5-sqlite php5-tidy php5-xmlrpc php5-xsl mysql-server
@@ -278,7 +278,7 @@ sudo apt-get install php5-cgi php5-mysql php5-fpm php5-curl php5-gd php5-idn php
 apt-get install php5-xcache
 ```
 
-####配置PHP Fast CGI (`php-fpm`)
+#### 配置PHP Fast CGI (`php-fpm`)
 编辑文件`/etc/php5/fpm/php.ini`:
 
 ```ini
@@ -299,7 +299,7 @@ listen = /var/run/php5-fpm.sock
 pm.max_requests = 500
 ```
 
-####配置Mysql数据库
+#### 配置Mysql数据库
 1. 连接数据库
 
     ```bash
@@ -321,7 +321,7 @@ pm.max_requests = 500
     exit
     ```
 
-##参考资料
+## 参考资料
 * [Ubuntu 服务器配置简易指南][phoenix]
 * [How To Set Up a Private Git Server on a VPS](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-private-git-server-on-a-vps)
 * [Nginx HttpCoreModule#listen][nginx]
