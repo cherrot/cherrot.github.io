@@ -23,6 +23,10 @@ description: Happy Hacking ;-)
 * [GitHub](https://github.com/cherrot)
 * [图虫](http://cherrot.tuchong.com/)：从D90到D7000到D610，从18-200到50和35：我似乎体会到写了多年代码却依旧没有入门是怎样一种体验了。
 
+### 2016.04.07 LVM
+
+[LVM](https://wiki.archlinux.org/index.php/LVM)是个好东西, 动态扩容磁盘不费劲儿.(`pvs/pvscan`,`vgs/vgscan`,`lvs/lvscan`,`vgdisplay`, `lvdisplay`, `pvcreate`, `vgextend`, `lvextend`, `resize2fs`)
+
 ### 2016.03.01 离线安装pip依赖
 
 ```
