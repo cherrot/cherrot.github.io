@@ -144,7 +144,7 @@ exacerbates that with so many simple tasks.
 
 [orm]: http://www.bigdatalittlegeek.com/blog/2014/3/18/orm-the-killer-of-scalability "ORM - the Killer of Scalability"
 [sqlalchemy-tutorial]: http://solovyov.net/en/2011/basic-sqlalchemy/
-[python-gil]: http://lesliezhu.github.io/public/2015-04-20-python-multi-process-thread.html "Python中的GIL、多进程和多线程"
+[python-gil]: http://lesliezhu.github.io/public/2015/04/20/python-multi-process-thread.html "Python中的GIL、多进程和多线程"
 [flask-request-stack]: http://www.zlovezl.cn/articles/charming-python-start-from-flask-request/ "Charming Python: 从Flask的request说起"
 [gevent-tutorial]: http://xlambda.com/gevent-tutorial/ "Gevent指南"
 [tune-gevent]: https://engineering.pinterest.com/blog/how-we-use-gevent-go-fast "How we use gevent go fast"
