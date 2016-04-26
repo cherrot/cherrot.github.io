@@ -31,7 +31,7 @@ description: Happy Hacking ;-)
 <!-- 2. `vgcreate`(创建 volume group. -->
 3. `pvcreate /dev/sdX`创建 physical volume.
 4. `vgextend vg0 /dev/sdX`扩展volume group.
-5. `lvresize -l +100%FREE vg0/lv0`
+5. `lvresize -l +100%FREE --resizefs vg0/lv0`
 
 ### 2016.03.01 离线安装pip依赖
 
