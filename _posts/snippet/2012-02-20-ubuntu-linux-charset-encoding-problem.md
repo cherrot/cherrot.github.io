@@ -7,9 +7,12 @@ tags: encoding
 description: 
 
 ---
-首先推荐 Ubuntu技巧总结 wiki：[http://wiki.ubuntu.org.cn/UbuntuSkills#.E4.B8.AD.E6.96.87](http://wiki.ubuntu.org.cn/UbuntuSkills#.E4.B8.AD.E6.96.87) （中文相关主题） 本文部分内容参考 [http://blog.csdn.net/yunzhaowei/article/details/6922815](http://blog.csdn.net/yunzhaowei/article/details/6922815)
+首先推荐 Ubuntu技巧总结 wiki: [http://wiki.ubuntu.org.cn/UbuntuSkills#.E4.B8.AD.E6.96.87](http://wiki.ubuntu.org.cn/UbuntuSkills#.E4.B8.AD.E6.96.87)
 
-## 察看编码
+## 查看编码
+经过了数十年的编码混战，`UTF-8`以它字符覆盖广、节约字节占用（牺牲了一定性能）、且二进制安全(8bit)的特性逐渐站稳脚跟成为主流。但毕竟还有很多异教徒的存在，常见异教徒就有`GB2312`,`GBK`(别名`cp936`),`GB18030`,`ISO8859-1`(别名`latin1`)等。
+
+这些异教徒中，`GB`开头的字符集格外臭名昭著。而`ISO8859-1`其实是扩展ASCII编码，所以多是用来背黑锅的角色，比如一些解压程序会把GBK等编码的文件名全部按`ISO8859-1`处理。
 
 ### file 命令
 
@@ -35,9 +38,13 @@ $ enca README
 
 ## 解决文件名乱码
 
-### 使用convmv（需要安装 convmv）
+### 使用convmv（通用解）
 
 `convmv -f GBK -t UTF-8 *.txt` 该方法将会测试所有的 .txt 文件名转码，如果确认无误，就在前一条命令中加上 --notest 参数执行文件名转码： `convmv -f GBK -t UTF-8 --notest *.txt` -f （from）是原文件名编码（一般是GBK、GB2312或GB18030）, -t （to）是目标文件名编码，设为UTF-8。 另外还可以使用 -r 参数递归处理子目录。
+
+
+### zip压缩包
+`unzip -O cp936` 可以指定解压编码(Ubuntu下unzip支持该参数)
 
 ## 解决文件内容乱码
 
