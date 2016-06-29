@@ -8,9 +8,9 @@ keywords: linux,git
 description: Linux生产环境速配指南，使用git作为自动部署工具
 
 ---
-
 ## Linux账户和SSH配置
-1. 使用`adduser`脚本（Ubuntu系统）添加用户master并设置明码：
+
+1.  使用`adduser`脚本（Ubuntu系统）添加用户master并设置明码：
 
     ```bash
     adduser master
@@ -26,15 +26,16 @@ description: Linux生产环境速配指南，使用git作为自动部署工具
     ```
 
     这里创建了用户`master`，默认组为`mygroup`，默认shell为`zsh`。注意，出于[安全考虑](https://wiki.archlinux.org/index.php/Users_and_groups#Example_adding_a_user)并不建议修改用户默认组，但这确实是一个比较简便的账户共享方式。
-2. 添加`sudoer`权限：
+
+2.  添加`sudoer`权限：
 
     ```bash
     adduser master sudo
     ```
-    
-3. 在本地添加ssh配置`~/.ssh/config`:
 
-    ```linux-config
+3.  在本地添加ssh配置`~/.ssh/config`:
+
+    ```nginx
     Host *
         ServerAliveCountMax 20
         ServerAliveInterval 240
@@ -44,7 +45,7 @@ description: Linux生产环境速配指南，使用git作为自动部署工具
         User master
     ```
 
-4. 添加ssh公钥认证
+4.  添加ssh公钥认证
 
     ```bash
     ssh-keygen -t rsa -C "email@example.com" #创建ssh密钥对，已有ssh密钥可忽略
@@ -58,16 +59,17 @@ description: Linux生产环境速配指南，使用git作为自动部署工具
     ```bash
     ssh-add ~/.ssh/id_rsa 
     ```
-    
-5. 修改服务器sshd配置 `/etc/ssh/sshd_config`：
+
+5.  修改服务器sshd配置 `/etc/ssh/sshd_config`：
 在修改服务器sshd配置前，需要确保使用个人密钥可以成功登录（不然当我们禁用密码登录，密钥登录又失败时，会死得很惨的……）
 修改以下字段禁用root登录及密码验证:
 
-    ```linux-config
+    ```
     PermitRootLogin no
     PasswordAuthentication no
     ```
-保存，重启sshd服务（Ubuntu直到14.10才支持systemd，遗憾）：
+
+    保存，重启sshd服务（Ubuntu直到14.10才支持systemd，遗憾）：
 
     ```bash
     sudo service ssh restart
@@ -79,15 +81,16 @@ description: Linux生产环境速配指南，使用git作为自动部署工具
 注意，如果线上部署环境需要多人共享，那么建议单独为git部署创建一个用户`git`，以避免各种奇奇怪怪的权限问题:D
 
 ### 服务器端git环境
-1. 首先创建裸仓库：
+1.  首先创建裸仓库：
 
     ```bash
     mkdir -p ~/repo/YourRepo.git && cd ~/repo/YourRepo.git
     git init --bare --shared=group 
     ```
+
     如果仓库已存在，可用`git config --bool core.bare true`完成到bare仓库的转换
-    
-2. 添加`post-receive`钩子，用于push代码后自动部署文件。创建并编辑`hooks/post-receive`:
+
+2.  添加`post-receive`钩子，用于push代码后自动部署文件。创建并编辑`hooks/post-receive`:
 
     ```bash
     #!/bin/sh
@@ -100,8 +103,8 @@ description: Linux生产环境速配指南，使用git作为自动部署工具
     ln -sf $HOME/data/YourSite/* ./
     exit
     ```
-    
-3. 创建必要目录并给`post-receive`添加可执行权限。
+
+3.  创建必要目录并给`post-receive`添加可执行权限。
 
     ```bash
     mkdir -p ~/www/YourSite
@@ -116,6 +119,7 @@ description: Linux生产环境速配指南，使用git作为自动部署工具
 git remote add deploy master@YourHostName:repo/YourRepo.git
 git push -u deploy master
 ```
+
 现在看看是不是已经成功部署到指定目录了？
 
 ### 服务器nginx:
@@ -142,8 +146,8 @@ multi_accept on;
     
     #更简洁清晰的日志格式
     log_format clean '$status\t$request_time\t$remote_addr'
-        '\t\t$time_local\t$body_bytes_sent'
-        '\t"$request"\t"$http_referer"';
+	'\t\t$time_local\t$body_bytes_sent'
+	'\t"$request"\t"$http_referer"';
 
     # default log format:
     #log_format combined '$remote_addr - $remote_user [$time_local] '
@@ -167,6 +171,7 @@ sudo service nginx restart
 ```
 
 #### nginx for PHP示例:
+
 ```nginx
 server {
     # 同时侦听 IPv4+IPv6 80端口：
@@ -203,6 +208,7 @@ server {
 ```
 
 #### nginx for python示例（以flask on uwsgi为例）:
+
 ```nginx
 server {
     listen [::]:80 ipv6only=off;
@@ -236,6 +242,7 @@ server {
 ```
 
 #### nginx反向代理示例：
+
 ```nginx
 server {
     listen [::]:80 ipv6only=off;
@@ -257,8 +264,10 @@ server {
     }
 }
 ```
+
 可以看出，只要修改`proxy_pass`字段，一个限制特定域名的代理就完成了。
 上面的配置用意是向公网提供代理访问某个监听`localhost:9200`的内网应用，并提供基本的安全限制（HTTP Authentication）因此使上述配置生效还需要生成一个用户密码文件，这项工作可以借助交互式终端程序`htpasswd`完成：
+
 ```bash
 sudo apt-get install apache2-utils
 htpasswd -c /home/master/data/user.pwd YourUserName
@@ -271,8 +280,10 @@ htpasswd -c /home/master/data/user.pwd YourUserName
 ```bash
 sudo apt-get install php5-cgi php5-mysql php5-fpm php5-curl php5-gd php5-idn php-pear php5-imap php5-mcrypt php5-mhash php5-pspell php5-recode php5-sqlite php5-tidy php5-xmlrpc php5-xsl mysql-server
 ```
+
 安装`mysql-server`期间会要求用户设置root密码。
 安装PHP字节码(opcode)加速器`XCache`(不建议使用APC，频繁写操作时会存在诡异的问题)：
+
 
 ```bash
 apt-get install php5-xcache
@@ -300,13 +311,14 @@ pm.max_requests = 500
 ```
 
 #### 配置Mysql数据库
-1. 连接数据库
+
+1.  连接数据库
 
     ```bash
     mysql -u root -p
     ```
-    
-2. 创建数据库、表
+
+2.  创建数据库、表
 
     ```mysql
     # 新建数据库
