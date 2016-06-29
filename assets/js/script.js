@@ -89,15 +89,15 @@ function afterPjax() {
   // Generate entries for h2 and h3
   $('#post__content').children('h2,h3').each(function() {
     // Generate random ID for each heading
-    $(this).attr('id', function() {
-      var ID = "",
-          alphabet = "abcdefghijklmnopqrstuvwxyz";
+    // $(this).attr('id', function() {
+    //   var ID = "",
+    //       alphabet = "abcdefghijklmnopqrstuvwxyz";
 
-      for(var i=0; i < 5; i++) {
-        ID += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
-      }
-      return ID;
-    });
+    //   for(var i=0; i < 5; i++) {
+    //     ID += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+    //   }
+    //   return ID;
+    // });
 
     if ($(this).prop("tagName") == 'H2') {
       toc.append('<li class="post__toc-li post__toc-h2"><a href="#' + $(this).attr('id') + '" class="js-anchor-link">' + $(this).text() + '</a></li>');
