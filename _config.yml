@@ -44,6 +44,10 @@ sass:
 disqus:
   shortname: cherrot
 
+# set timezone to avoid jekyll skpping my post for its 'future date'
+#timezone: '+0800'
+future: true
+
 # Jekyll Plugin
 # https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/
 gems:
