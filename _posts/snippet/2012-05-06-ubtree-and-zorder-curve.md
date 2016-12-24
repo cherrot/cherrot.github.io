@@ -2,7 +2,7 @@
 layout: post
 title: "UBTree & Z-Order Curve学习"
 date: 2012-05-16 10:24:00
-categories: life
+categories: snippet
 tags: 
 keywords: algorithm
 description: 

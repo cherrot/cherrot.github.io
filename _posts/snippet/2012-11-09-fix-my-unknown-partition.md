@@ -2,7 +2,7 @@
 layout: post
 title: "硬盘分区变Unknow的修复历程"
 date: 2012-11-09 10:24:00
-categories: life
+categories: snippet
 tags: partition, ext4
 keywords: 
 description: 

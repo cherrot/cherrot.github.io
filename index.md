@@ -6,20 +6,14 @@ description: Happy Hacking ;-)
 ---
 
 ## whoami
-一只人畜无害的程序猿。爱折腾，爱瞎折腾。
 
-* 2009年开始大学生涯
-* 2011年开始使用`Linux`，2012年开始使用`git`，不过大学里用的主力语言竟然是`java`...
-* 2012年进入鹅厂实习，主力`javasccript`, 兼职拍(P)黄(H)片(P)。其实这时候才刚开始成为Vimer。在强制使用Windows的鹅厂坚持`cygwin`+`vim`：头顶姨妈巾，装的就是13。。。
-* 2013年正式进入鹅厂，成为一个专业拍黄片的。私下也会玩玩蟒蛇，倒腾些红宝石。
-* 2015年初，提肾来到`Face++`，和一群贵系的geek过起了没羞没臊的xing福生活。
+Software engineer at Megvii
 
-有一部相机，偶尔左拍拍右拍拍；有把破吉他，可总是断断续续的学了忘了。
-因为只有代码才是真爱，这些骗姑娘的把戏我才懒得玩儿呢 =。=
-
->以上都错了，其实，我只是个好人
+Happy hacking ;)
 
 ## 存在感
+
+* 远离社交网络
 * [GitHub](https://github.com/cherrot)
 * [图虫](http://cherrot.tuchong.com/)：从D90到D7000到D610，从18-200到50和35：我似乎体会到写了多年代码却依旧没有入门是怎样一种体验了。
 
@@ -28,7 +22,7 @@ description: Happy Hacking ;-)
 [LVM](https://wiki.archlinux.org/index.php/LVM)是个好东西, 动态扩容磁盘不费劲儿:
 
 1. `vgs/vgscan/vgdisplay`, `pvs/pvscan/pvdisplay`,`lvs/lvscan/lvdisplay`, `lvmdiskscan`查看.
-<!-- 2. `vgcreate`(创建 volume group. -->
+2. `vgcreate`(创建 volume group.
 3. `pvcreate /dev/sdX`创建 physical volume.
 4. `vgextend vg0 /dev/sdX`扩展volume group.
 5. `lvresize -l +100%FREE --resizefs vg0/lv0`
