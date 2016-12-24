@@ -10,6 +10,11 @@ $(function() {
       posttoc = $('#post-toc-menu'),
       x1, y1;
 
+  // only remove open in small screen
+  if($(window).width() <= 1024) {
+    menu.add(sidebar).add(main).removeClass('open');
+  }
+
   // run this function after pjax load.
   var afterPjax = function() {
     // open links in new tab.
