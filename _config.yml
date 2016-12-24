@@ -1,34 +1,52 @@
+# Site settings
+title: Cherrot's
+description: Happy hacking :)
+url: http://cherrot.com
+baseurl: "" # the subpath of your site, e.g. /blog/
+rss_url: /feed
+
+# Author
+author: Cherrot Luo
+email: cherrotluo@gmail.com
+github: cherrot
+# twitter: cherrot
+# weibo: cherrot
+# instagram: cherrot
+# linkedin: cherrot
+
+# Sidebar filter
+# Choose 'tag' or 'category' as filter in sidebar.
+filter: 'category'
+recent_num: 50
+
+# avatar
+avatar: http://en.gravatar.com/userimage/15965667/81ec86b4ed649c9043cdb705c5afccef.png
+favicon: '/favicon.ico'
+
+# Format
 permalink: date
+# permalink: /:year/:month/:day/:title
 markdown: kramdown
 #markdown: redcarpet
 highlighter: rouge
-
 kramdown:
   input: GFM
+mathjax: disabled
+sass:
+  style: compressed
 
-# 作者信息
-author: 
-  name: Cherrot Luo
-  email: cherrotluo@gmail.com
-  link: http://cherrot.com
-  github: http://github.com/cherrot
+# google analytics
+# ga:
+#   id:
+#   url:
 
-# 站点信息
-title: Cherrot's Daily
-description: Happy hacking :)
-url: http://cherrot.com
-rss_url: /feed
-
-# avatar头像及Favicon
-avatar: http://en.gravatar.com/userimage/15965667/81ec86b4ed649c9043cdb705c5afccef.png
-#favicon: http://7u2ho6.com1.z0.glb.clouddn.com/site-favicon.ico
-favicon: '/favicon.ico'
-
-# google analytics 设置
-#ga:
-#  id: UA-54767140-1
-#  url: yansu.org
-
-# disqus 设置
+# disqus
 disqus:
   shortname: cherrot
+
+# Jekyll Plugin
+# https://help.github.com/articles/adding-jekyll-plugins-to-a-github-pages-site/
+gems:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
