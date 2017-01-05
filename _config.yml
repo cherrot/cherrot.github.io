@@ -36,9 +36,9 @@ sass:
   style: compressed
 
 # google analytics
-# ga:
-#   id:
-#   url:
+ga:
+  id: "UA-16507835-6"
+  url: "auto"
 
 # disqus
 disqus:
