@@ -86,17 +86,17 @@ linux下限制必须是同一用户的进程）同时`bind`相同的source addre
 监听和派发请求到对应worker进程的方式更有效率，果不其然，`nginx`在1.9.1版本中的
 Socket Sharding就是通过`SO_REUSEPORT`实现的:
 
-![before](https://assets.wp.nginx.com/wp-content/uploads/2015/05/Slack-for-iOS-Upload-1-e1432652484191.png)
+![before](https://cdn.wp.nginx.com/wp-content/uploads/2015/05/Slack-for-iOS-Upload-1-e1432652484191.png)
 
 (默认策略：master监听socket，workers使用`accept_mutex`竞争request connections)
 
-![after](https://assets.wp.nginx.com/wp-content/uploads/2015/05/Slack-for-iOS-Upload-e1432652376641.png)
+![after](https://cdn.wp.nginx.com/wp-content/uploads/2015/05/Slack-for-iOS-Upload-e1432652376641.png)
 
 (启用Socket Sharding后)
 
 benchmark能达到默认策略的3倍性能(req/s和latency):
 
-![benchmark](https://assets.wp.nginx.com/wp-content/uploads/2015/05/reuseport-benchmark.png)
+![benchmark](https://cdn.wp.nginx.com/wp-content/uploads/2015/05/reuseport-benchmark.png)
 
 详见[官方Blog][socket-sharding-in-nginx]。顺便也科普一下[nginx的架构和原理][inside-nginx]
 
