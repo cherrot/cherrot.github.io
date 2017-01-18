@@ -165,20 +165,21 @@ ssh -J user1@Host1:22,user2@Host2:2222 user3@Host3
 
 ### 安全性
 
-建议为端口转发建立专门的账户，使用随机密码（当然使用私钥登录更好），并且禁掉其执行命令的权限。最简单的方式为
+- 建议为端口转发建立专门的账户，使用随机密码（当然使用私钥登录更好），并且禁掉其执行命令的权限。最简单的方式为  
 
-``` bash
-# add user tunnel-user for ssh port forwarding
-sudo useradd -m tunnel-user
-# generate 10 random passwords with 16 length
-pwgen -sy1 16 10
-# pick one password and set it to tunnel-user
-sudo passwd tunnel-user
-# disable shell for tunnel-user
-sudo chsh -s /bin/false tunnel-user
-```
+  ``` bash
+  # add user tunnel-user for ssh port forwarding
+  sudo useradd -m tunnel-user
+  # generate 10 random passwords with 16 length
+  pwgen -sy1 16 10
+  # pick one password and set it to tunnel-user
+  sudo passwd tunnel-user
+  # disable shell for tunnel-user
+  sudo chsh -s /bin/false tunnel-user
+  ```
 
-更多可参考[Ask Ubuntu][ssh-user-only]
+  更多可参考[Ask Ubuntu][ssh-user-only]
+- 避免在公网直接暴露动态代理转发，**很危险**。 尽量远程端口转发到目标主机的ssh端口。这样需要远程接入的人可以自行ssh登录或打开本地Socks代理。
 
 ### 保持连接
 
@@ -195,6 +196,18 @@ Host *
 ```
 ClientAliveInterval 180
 ```
+
+### Windows 客户端
+
+(我是个不喜欢贴图的人。。）以[PuTTY](http://www.putty.org/)为例，假如这台Windows主机在内网，我们要借助公网主机的远程端口转发建立隧道：
+
+1.  和往常一样，在`Session`菜单输入公网主机的IP和SSH端口
+2.  在`SSH`菜单里勾选`Don't start a shell or command at all`，以建立一个纯隧道连接（不需要登录shell）
+3.  展开`SSH`菜单，进入`Tunnels`子菜单：
+    1.  勾选`Remote ports do the same (SSH-2 only)`，使远程端口监听公网连接。
+    2.  输入具体端口配置，比如`Source port`（也就是远程主机要监听的端口）填写22222，`Destination`填写`HostIP:22`，其中HostIP为内网中SSH服务器的IP。
+    3.  选择`Remote`, `Auto`，表示建立远程端口转发。**点击`Add`添加配置**
+4.  点击`Open`登录公网主机即可建立隧道。
 
 [openssh-cookbook]: https://en.wikibooks.org/wiki/OpenSSH/Cookbook/Proxies_and_Jump_Hosts "OpenSSH/Cookbook/Proxies and Jump Hosts"
 [ssh-over-proxy]: https://www.lainme.com/doku.php/blog/2011/01/%E9%80%8F%E8%BF%87%E4%BB%A3%E7%90%86%E8%BF%9E%E6%8E%A5ssh "透过代理连接ssh"
