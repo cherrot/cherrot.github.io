@@ -7,7 +7,7 @@ description: Happy Hacking ;-)
 
 ## whoami
 
-Software engineer at Megvii
+Software engineer at [Megvii](https://www.faceplusplus.com.cn/)
 
 Happy hacking ;)
 
@@ -15,7 +15,11 @@ Happy hacking ;)
 
 * 远离社交网络
 * [GitHub](https://github.com/cherrot)
-* [图虫](http://cherrot.tuchong.com/)：从D90到D7000到D610，从18-200到50和35：我似乎体会到写了多年代码却依旧没有入门是怎样一种体验了。
+* [图虫](http://cherrot.tuchong.com/)：从Nikon D90到D7000到D610，从18-200mm到50mm和35mm：我似乎体会到写了多年代码却依旧没有入门是怎样一种体验了。
+
+### 2017.01.30 大年初二
+
+晚上出去聚餐，下雪了，才3岁的侄子心颂睡觉时跟妈妈说：“我有些担心，外面天气不好，我担心叔叔。”听到我开门回家时，小家伙还没睡，跟爸爸说：“我估计叔叔回来了，我想看看。”真是个小暖男，心都化了~
 
 ### 2016.04.07 LVM
 
