@@ -3,7 +3,7 @@ layout: post
 title: SSH隧道：内网穿透实战
 date: 2017-01-08 19:00:00
 categories: tech
-tags: ssh, linux
+tags: ssh linux
 keywords: [linux, ssh, tunnel, proxy]
 description: "介绍常见的ssh端口转发策略和应用场景"
 
