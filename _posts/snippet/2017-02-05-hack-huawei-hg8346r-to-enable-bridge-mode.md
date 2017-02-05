@@ -28,7 +28,7 @@ description: 华为`HG8346R`光纤路由器自带的功能限制太多，而且�
 
 ### OSX / Linux
 
-华为的维护工具包是Windows程序，因此需要安装`wine`模拟器：
+华为的维护工具包是Windows程序，需要安装`wine`模拟器：
 
 ``` bash
 # on OSX
@@ -54,7 +54,7 @@ server.listen('0.0.0.0', 69)
 
 或者`cd`到工具包目录，`sudo python tftpd.py`启动tftp服务
 
-注意，OSX用户**不要使用系统自带的tftpd服务，基于tftpd的GUI版软件也不行（比如tftpserver）**，因为要想上传文件（`put`），必须更改tftpd的启动参数（`-s`），但`OS X EI Capitan`禁用了编辑服务配置文件的权限，`sudo`也没戏，除非重启进入Recovery模式。另外我尝试直接运行`tftpd`也没戏，折腾个把小时还不如3行Python代码来的简单。
+注意，OSX用户**不要使用系统自带的tftpd服务，基于tftpd的GUI版软件也不行（比如tftpserver）**，因为要想上传文件（`put`），必须更改tftpd的启动参数（`-s`），但`OS X EI Capitan`禁用了编辑服务配置文件的权限，除非重启进入Recovery模式。另外我尝试直接运行`tftpd`也没戏，折腾个把小时还不如3行Python代码来的简单。
 
 ### Windows
 
@@ -91,6 +91,7 @@ server.listen('0.0.0.0', 69)
 ### 恢复华为出厂模式
 
 9.  回到`telnet`
+
     ``` bash
     su
     shell
