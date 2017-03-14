@@ -20,17 +20,21 @@ description: Linux生产环境速配指南，使用git作为自动部署工具
     `adduser` 会交互式提示用户输入必要的信息，创建用户和与用户同名的组，并创建home目录。如果需要更多自定义选项，可以使用原始命令`useradd`:
 
     ```bash
+    # OPTIONAL, create a user group.
     groupadd mygroup
     useradd -m -g mygroup -s /bin/zsh master
     passwd master
     ```
 
-    这里创建了用户`master`，默认组为`mygroup`，默认shell为`zsh`。注意，出于[安全考虑](https://wiki.archlinux.org/index.php/Users_and_groups#Example_adding_a_user)并不建议修改用户默认组，但这确实是一个比较简便的账户共享方式。
+    这里创建了用户`master`，默认组为`mygroup`(此参数可省略)，默认shell为`zsh`。注意，出于[安全考虑](https://wiki.archlinux.org/index.php/Users_and_groups#Example_adding_a_user)并不建议修改用户默认组，但这确实是一个比较简便的账户共享方式。
 
 2.  添加`sudoer`权限：
 
     ```bash
     adduser master sudo
+    # on other Linux, you may need run visudo and uncomment the `%wheel ALL=(ALL) ALL` line first.
+    # see: https://wiki.archlinux.org/index.php/Sudo_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)
+    # gpasswd -a master wheel
     ```
 
 3.  在本地添加ssh配置`~/.ssh/config`:
