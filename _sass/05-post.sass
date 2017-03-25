@@ -79,11 +79,14 @@ h1 + h2, h2 + h3, h3 + h4, h4 + h5, h5 + h6
 
   blockquote
     position: relative
-    margin: 0 0 $post-paragraph-spacing 2em
+    //margin: 0 0 $post-paragraph-spacing 2em
+    margin: 0
     font-style: italic
+    padding: 0 1em
+    color: #6a737d
+    border-left: 0.25em solid #dfe2e5
     &:before
       @extend %icon
-      @extend %icon-quotes-left
       position: absolute
       top: 0
       left: -1.5em
