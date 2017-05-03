@@ -7,7 +7,7 @@ description: Happy Hacking ;-)
 
 ## whoami
 
-Software engineer at [Megvii](https://www.faceplusplus.com.cn/)
+Software engineer at [Megvii](https://www.megvii.com/)
 
 Happy hacking ;)
 
