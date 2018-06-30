@@ -1,7 +1,7 @@
 # Site settings
 title: Cherrot's
 description: Happy hacking :)
-url: http://cherrot.com
+url: https://cherrot.com
 baseurl: "" # the subpath of your site, e.g. /blog/
 rss_url: /feed
 
@@ -20,7 +20,7 @@ filter: 'category'
 recent_num: 50
 
 # avatar
-avatar: http://en.gravatar.com/userimage/15965667/81ec86b4ed649c9043cdb705c5afccef.png
+avatar: https://en.gravatar.com/userimage/15965667/81ec86b4ed649c9043cdb705c5afccef.png
 favicon: '/favicon.ico'
 
 # Format
