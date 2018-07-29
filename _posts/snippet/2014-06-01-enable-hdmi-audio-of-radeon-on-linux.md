@@ -33,7 +33,7 @@ card 1: HDMI [HDA ATI HDMI], device 3: HDMI 0 [HDMI 0]
  
 1. 编辑`/etc/default/grub`文件，找到`GRUB_CMDLINE_LINUX_DEFAULT`所在的行，在最后添加`radeon.audio=1`，在我的机器上添加后是这样子：
  
-    ```linux-config
+    ``` conf
     GRUB_CMDLINE_LINUX_DEFAULT="quiet splash radeon.audio=1"
     ```
  

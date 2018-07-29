@@ -8,7 +8,9 @@ description:
 
 ---
 
-在我的[上一篇文章](http://cherrot.com/2011/09/enable-full-chinese-after-installing-lyx-on-ubuntu/ "Ubuntu安装LyX后要做的那点事儿")里介绍了如何使LyX正确导出中文的PDF文件。不过我发现这样做对中文的支持太有限，不能使用其他字体，也不能使用系统的字体等等。还好我是个相当喜欢折腾的人（小胡有言曰“不折腾”，看来我有点反胡扯主义的味道），继续在Google上爬，这才知道原来使用XeTeX处理CJK才是王道，配合XeTeX自带的xeCJK宏包效果那叫一个赞。因为XeTeX最初是为Mac OS X设计的，原生支持Unicode。下面我将以图文形式详细说明如何设置LyX完美支持中文： _注：笔者使用系统平台为Ubuntu 11.04/Ubuntu11.10，LyX版本2.0.0，TexLive版本2009-11。本文以Ubuntu11.04/Ubuntu11.10的设置为例，其他平台大同小异。_ 另外如果不一定使用LyX的话，可以参考这里：[http://www.cnblogs.com/rockcode/archive/2011/08/06/2129561.html](http://www.cnblogs.com/rockcode/archive/2011/08/06/2129561.html "真正的Linux下的中文LATEX解决方案: CTeX + xeCJK + XeTEX") 《Linux下的中文LATEX解决方案》，是使用CTeX+XeTeX宏包实现的。
+因为XeTeX最初是为Mac OS X设计的，原生支持Unicode。使用XeTeX，配合自带的xeCJK宏包效果那叫一个赞。下面我将详细说明如何设置LyX完美支持中文： _注：笔者使用系统平台为Ubuntu 11.04/Ubuntu11.10，LyX版本2.0.0，TexLive版本2009-11。本文以Ubuntu11.04/Ubuntu11.10的设置为例，其他平台大同小异。_ 
+
+如果不使用LyX的话，可以参考[《Linux下的中文LATEX解决方案: CTeX + xeCJK + XeTEX"》](http://www.cnblogs.com/rockcode/archive/2011/08/06/2129561.html)
 
 下文写于2011年，很多内容可能已经过时（我自2014年以后就再没用过LaTeX了）。如果是写论文需要，可以参考下列文章or项目：
 
@@ -37,7 +39,7 @@ description:
 
 第五步：设置LaTeX序，添加如下代码：
 
-```
+``` tex
 \usepackage[BoldFont,SlantFont,CJKnumber,fallback]{xeCJK}%使用TexLive自带的xeCJK宏包，并启用加粗、斜体、CJK数字和备用字体选项
 \setmainfont{DejaVu Serif}%设置西文衬线字体,{}中是字体名,可更换,下同
 \setsansfont{DejaVu Sans}%设置西文无衬线字体
@@ -52,13 +54,13 @@ description:
 \setlength{\parindent}{2em}%缩进两个字符
 ```
 
-关于什么是衬线字体，什么是无衬线字体，可以参考《XeTeX / LaTeX 中文排版之胡言乱语》。我使用了Adobe的免费中文字体（Windows下安装Adobe Reader时会自动安装），可以[在这里](http://ishare.iask.sina.com.cn/f/15105086.html)下载到。如果需要使用Windows下的常用字体，可以在[http://scutthesis.googlecode.com/files/winfonts.zip](http://scutthesis.googlecode.com/files/winfonts.zip) 下载。解压到~/.fonts文件夹后， 再在终端运行fc-cache命令，刷新字体库。 若用fc-list :lang=zh命令，可以到所安装的中文字体（这些字体应该都可以在LyX中使用，直接将名字替换掉上述代码中的字体字符串即可）。 另外说明一下，这个链接其实就是一个好人贡献的华南理工大学LyX与LaTeX的论文模板的项目，项目主页：[http://scutthesis.googlecode.com/](http://scutthesis.googlecode.com/)。
+关于什么是衬线字体，什么是无衬线字体，可以参考[《XeTeX / LaTeX 中文排版之胡言乱语》](http://yuyichao.github.io/xetex-tutorial.pdf)。我使用了Adobe的免费中文字体（Windows下安装Adobe Reader时会自动安装），可以[在这里](http://ishare.iask.sina.com.cn/f/15105086.html)下载到。如果需要使用Windows下的常用字体，可以在<http://scutthesis.googlecode.com/files/winfonts.zip> 下载。解压到~/.fonts文件夹后， 再在终端运行`fc-cache`命令，刷新字体库。 若用`fc-list :lang=zh`命令，可以到所安装的中文字体（这些字体应该都可以在LyX中使用，直接将名字替换掉上述代码中的字体字符串即可）。 
 
 ## 3\. 更多设置
 
 在进行了如上设置后，你可能会发现，编辑的文档中如果含有自动编号的图表时，输出的图表编号是英文的，这是因为在我们之前的设置中把语言设置成英文的缘故（而设置成中文是通不过编译的），在《LyTeX中文帮助文档》中找到了办法，使用\renewcommand命令即可办到——将下面的内容添加到LaTeX序中即可将摘要、目录、图表等标记全部转换为中文：
 
-```
+``` tex
 \renewcommand\arraystretch{1.2}%1.2表示表格中行间距的缩放比例因子(缺省的标准值为1),中文需要更多的间距
 \renewcommand{\contentsname}{目录}
 \renewcommand{\listfigurename}{插图目录}
@@ -84,9 +86,9 @@ description:
 
 ## 4\. 强烈推荐三篇教程
 
-《LyTeX中文帮助文档》、xeCJK官方文档和《XETEX / L TEX 中文排版之胡言乱语》 其实本文中的很多内容也是从这些文档中找到答案的，尤其是《LyTeX中文帮助文档》，新手一定要读一读。 如果这两篇教程和本文所涉及到的字体资源用户可以自行替换，如果本文涉及的字体或其他资源您找不到的话，欢迎留言告诉我。
+《LyTeX中文帮助文档》、xeCJK官方文档和[《XETEX / LATEX 中文排版之胡言乱语》](http://yuyichao.github.io/xetex-tutorial.pdf) 其实本文中的很多内容也是从这些文档中找到答案的，尤其是《LyTeX中文帮助文档》，新手一定要读一读。 如果这两篇教程和本文所涉及到的字体资源用户可以自行替换，如果本文涉及的字体或其他资源您找不到的话，欢迎留言告诉我。
 
-## 6.ChangeLog
+## 5. ChangeLog
 
 *   2012-01-13 添加了第三部份：更多设置，对修改公式、图表的编号语言和样式等进行了介绍。
 *   2012-03-02 如果之前使用CJK宏包，使用系统字体的设置可能会出问题，补充了对该情况的说明。
@@ -96,7 +98,7 @@ description:
 P.S. 如果觉得XeCJK用起来还是很麻烦，你也许应该考虑一下CTeX宏包，它是对XeCJK的进一步封装；或者使用CTexLive套装，可以下ISO镜像文件安装。 
 PP.S. 最后分享一下我的LaTeX序言吧： 
 
-```
+``` tex
 %中英文混排设置%
 \usepackage[BoldFont,SlantFont,fallback,CJKchecksingle]{xeCJK}
 \setmainfont{DejaVu Serif}%西文衬线字体 DejaVu
