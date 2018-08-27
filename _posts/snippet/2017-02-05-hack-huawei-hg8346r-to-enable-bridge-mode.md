@@ -105,6 +105,7 @@ R17版本必须降级固件到R16才能成功进入维护模式，直接尝试�
     backup cfg by tftp svrip 192.168.1.2 remotefile hw_ctree.xml
     ```
     如果命令执行成功，你设定的tftp目录下（tftp-dir）便有了`hw_ctree.xml`配置文件了。
+    如果遇到错误`ERROR: command is not existed`，请参照评论中贴出的方法导出配置。
 3.  运行`华为光猫配置文件加解密工具.exe`，输入文件选择`hw_ctree.xml`，输出文件设置为`hw_ctree.dec.xml.gz`，解密。
 4.  解压`hw_ctree.dec.xml.gz`（OSX：`gzip -d hw_ctree.dec.xml.gz`）得到`hw_ctree.dec.xml`。
 
