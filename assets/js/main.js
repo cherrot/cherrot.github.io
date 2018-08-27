@@ -54,20 +54,12 @@ $(function() {
 
     // discus comment.
     {% if site.disqus.shortname %}
-      var ds_loaded = false;
       window.disqus_shortname = "{{ site.disqus.shortname }}";
-      main.scroll(function(){
-        var nScrollHight = $(this)[0].scrollHeight;
-        var nScrollTop = $(this)[0].scrollTop;
-        if(!ds_loaded && nScrollTop + main.height() >= nScrollHight - 100) {
-          $.ajax({
-            type: 'GET',
-            url: 'https://' + disqus_shortname + '.disqus.com/embed.js',
-            dataType: 'script',
-            cache: true
-          });
-          ds_loaded = true;
-        }
+      $.ajax({
+        type: 'GET',
+        url: 'https://' + disqus_shortname + '.disqus.com/embed.js',
+        dataType: 'script',
+        cache: true
       });
     {% endif %}
     // your scripts
